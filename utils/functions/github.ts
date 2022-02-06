@@ -1,27 +1,32 @@
 import useSWR from "swr";
-
-/*
-need:
-html_url
-description
-language
-*/
+import fetch from "node-fetch";
 
 interface GithubContents {
+  owner: {
+    avatar_url: string;
+  };
   html_url: string;
   description: string;
   language: string;
 }
 
-const fetcher = (url: string) => fetch(url).then((r) => r.json());
+const fetcher = async (url: string): Promise<GithubContents> => {
+  return await fetch(url).then((r) => r.json() as Promise<GithubContents>);
+};
 
-export async function getRepositoryInfo(repo: string) {
-  // : Promise<{ html_url: string, description: string, langauge: string} | null>
-  const { data, error } = useSWR(
-    `https://api.github.com/repos/rsource-open-source/${repo}`,
-    fetcher
-  );
-  console.log(data || error);
+export async function getRepositoryInfo(
+  repo: string
+): Promise<GithubContents | null> {
+  // const { data, error } = useSWR(
+  //   `https://api.github.com/repos/rsource-open-source/${repo}`,
+  //   fetcher
+  // );
+  // return { data, error };
+
+  return (await fetcher(
+    `https://api.github.com/repos/rsource-open-source/${repo}`
+  )) as GithubContents;
+
   // if (!data) return null;
   // if (typeof data !== "object") return null;
   // if (data.has)
