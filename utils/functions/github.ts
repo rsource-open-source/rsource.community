@@ -1,39 +1,34 @@
-import useSWR from "swr";
-import fetch from "node-fetch";
+import fetcher from "./fetcher";
 
-interface GithubContents {
+interface GitHubRepoContents {
   owner: {
     avatar_url: string;
   };
   html_url: string;
   description: string;
   language: string;
+  name: string;
 }
 
-const fetcher = async (url: string): Promise<GithubContents> => {
-  return await fetch(url).then((r) => r.json() as Promise<GithubContents>);
-};
+interface GitHubOrgContents {
+  name: string;
+  avatar_url: string;
+  html_url: string;
+  description: string;
+}
 
 export async function getRepositoryInfo(
   repo: string
-): Promise<GithubContents | null> {
-  // const { data, error } = useSWR(
-  //   `https://api.github.com/repos/rsource-open-source/${repo}`,
-  //   fetcher
-  // );
-  // return { data, error };
-
+): Promise<GitHubRepoContents | null> {
   return (await fetcher(
     `https://api.github.com/repos/rsource-open-source/${repo}`
-  )) as GithubContents;
-
-  // if (!data) return null;
-  // if (typeof data !== "object") return null;
-  // if (data.has)
-  // if (data.description) return data.description;
-  // else return null;
+  )) as GitHubRepoContents;
 }
 
-// export function ripRepoTitle(repo: string): null | string {
-//   const match =
-// }
+export async function getOrganizationInfo(
+  org: string
+): Promise<GitHubOrgContents | null> {
+  return (await fetcher(
+    `https://api.github.com/orgs/${org}`
+  )) as GitHubOrgContents;
+}
