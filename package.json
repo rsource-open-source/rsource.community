@@ -1,5 +1,5 @@
 {
-  "name": "rsource-website",
+  "name": "rsource.community",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -8,6 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "axios": "^0.25.0",
     "next": "12.0.10",
     "node-fetch": "^3.2.0",
     "react": "17.0.2",
