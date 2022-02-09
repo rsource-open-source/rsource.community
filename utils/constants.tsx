@@ -5,7 +5,7 @@ export module regexes {
 
 export const unknownJsx = (
   <>
-    <title title="unknown redirect"></title>
+    <title>unknown redirect</title>
     <meta property="og:title" content="unknown redirect" />
   </>
 );
