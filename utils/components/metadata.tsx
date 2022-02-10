@@ -5,7 +5,7 @@ import {
   GitHubOrgContents,
   GitHubRepoContents,
 } from "../functions/github";
-import findRoute from "../functions/scout";
+import findRoute from "../functions/route";
 import { regexes, unknownJsx } from "../constants";
 import React from "react";
 import mapMetadata from "./mapmetadata";
