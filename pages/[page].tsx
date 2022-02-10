@@ -1,4 +1,4 @@
-import teleporter from "../utils/functions/teleporter";
+// import teleporter from "../utils/functions/teleporter";
 import Metadata from "../utils/components/metadata";
 import Head from "next/head";
 import { colors } from "../utils/constants";

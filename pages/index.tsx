@@ -1,10 +1,10 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import findRoute from "../utils/functions/route";
-// import Image from "next/image";
+import figlet from "figlet";
 
 const Home: NextPage = () => {
-  console.log(findRoute());
+  console.log(window);
+  let title = figlet.textSync("rsource.community", "Slant");
   return (
     <div>
       <Head>
@@ -14,8 +14,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h1>coming soon</h1>
-        <p>test</p>
+        <p>{title}</p>
       </main>
     </div>
   );
