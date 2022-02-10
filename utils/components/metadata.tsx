@@ -1,61 +1,82 @@
-import { getRepositoryInfo, getOrganizationInfo } from "../functions/github";
-import findRoute from "../functions/scout";
-import { regexes } from "../etc/regex";
+import {
+  getRepositoryInfo,
+  getOrganizationInfo,
+  removeImageNonsense,
+  GitHubOrgContents,
+  GitHubRepoContents,
+} from "../functions/github";
+import findRoute from "../functions/route";
+import { regexes, unknownJsx } from "../constants";
+import React from "react";
+import mapMetadata from "./mapmetadata";
 
-export default async function Metadata(): Promise<JSX.Element> {
-  let route = findRoute();
-  if (!route) return <></>;
-  let routeAsUrl = new URL(route);
+interface MetadataState {
+  orgdata: null | GitHubOrgContents;
+  repodata: null | GitHubRepoContents;
+}
 
-  if (route.match(regexes.isOrg) && !route.match(regexes.isRepo)) {
-    const orgInfo = await getOrganizationInfo(
-      routeAsUrl.pathname.replace(regexes.isOrg, "")
-    );
+export default class Metadata extends React.Component<{}, MetadataState> {
+  constructor(...args: any[]) {
+    super([...args]);
+    this.state = { orgdata: null, repodata: null };
+  }
 
-    if (!orgInfo) return <></>;
-    const { name, description, avatar_url, html_url } = orgInfo;
-
-    return (
-      <>
-        <meta property="og:title" content={name} />
-        <meta property="og:url" content={html_url} />
-        <meta
-          property="og:image"
-          content={avatar_url.replace(/\?s\=\d*/, "")}
-        />
-        <meta property="og:description" content={description} />
-        <meta name="theme-color" content="#171a21" />
-      </>
-    );
-  } else if (route.match(regexes.isRepo)) {
-    let repo = routeAsUrl.pathname.substring(1);
-
-    const repoInfo = await getRepositoryInfo(repo);
-    if (!repoInfo) return <></>;
-    const { description, html_url, language, name } = repoInfo;
-    const avatar_url = repoInfo.owner.avatar_url;
-
-    return (
-      <>
-        <meta
-          property="og:title"
-          content={`${name.replaceAll("-", " ")} | ${language}`}
-        />
-        <meta property="og:url" content={html_url} />
-        <meta
-          property="og:image"
-          content={avatar_url.replace(/\?s\=\d*/, "")}
-        />
-        <meta property="og:description" content={description} />
-        <meta name="theme-color" content="#171a21" />
-      </>
+  async getOrgData() {
+    let route = findRoute();
+    if (!route) return null;
+    return await getOrganizationInfo(
+      new URL(route).pathname.replace(regexes.isOrg, "")
     );
   }
 
-  return (
-    <>
-      <meta property="og:title" content="unknown redirect" />
-      <meta name="theme-color" content="#171a21" />
-    </>
-  );
+  async getRepoData() {
+    let route = findRoute();
+    if (!route) return null;
+    return await getRepositoryInfo(new URL(route).pathname.substring(1));
+  }
+
+  componentDidMount() {
+    this.getOrgData().then((orgdata) => this.setState({ orgdata }));
+    this.getRepoData().then((repodata) => this.setState({ repodata }));
+  }
+
+  render() {
+    let route = findRoute();
+    console.log(route);
+    if (!route) return unknownJsx;
+
+    if (route.match(regexes.isOrg) && !route.match(regexes.isRepo)) {
+      const orgInfo = this.state.orgdata;
+      if (!orgInfo) return unknownJsx;
+
+      const { name, description, avatar_url, html_url } = orgInfo;
+
+      return mapMetadata(
+        name,
+        html_url,
+        description,
+        removeImageNonsense(avatar_url)
+      );
+    } else if (route.match(regexes.isRepo)) {
+      const repoInfo = this.state.repodata;
+      if (!repoInfo) return unknownJsx;
+
+      const {
+        name,
+        description,
+        language,
+        owner: { avatar_url },
+        html_url,
+      } = repoInfo;
+
+      return mapMetadata(
+        `${name.replaceAll("-", " ")} | ${language}`,
+        html_url,
+        description,
+        removeImageNonsense(avatar_url)
+      );
+    }
+
+    return unknownJsx;
+  }
 }

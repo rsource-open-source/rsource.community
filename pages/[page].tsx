@@ -1,14 +1,15 @@
 import teleporter from "../utils/functions/teleporter";
 import Metadata from "../utils/components/metadata";
 import Head from "next/head";
+import { colors } from "../utils/constants";
 
 export default function renda(): JSX.Element {
-  teleporter();
+  // setTimeout(() => teleporter(), 10000);
   return (
     <>
       <Head>
         <meta
-          content="#171a21"
+          content={colors.primary}
           data-react-helmet="true"
           name="theme-color"
         ></meta>

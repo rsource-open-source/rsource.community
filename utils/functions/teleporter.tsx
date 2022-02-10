@@ -1,7 +1,8 @@
-import findRoute from "./scout";
+import findRoute from "./route";
 
 export default function teleporter() {
   let res = findRoute();
+  console.log(res);
   if (res) window.location.href = res;
-  // else window.location.href = "/";
+  else window.location.href = "/";
 }

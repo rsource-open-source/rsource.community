@@ -1,20 +1,20 @@
 import fetcher from "./fetcher";
 
-interface GitHubRepoContents {
+export interface GitHubBaseContents {
+  name: string;
+  html_url: string;
+  description: string;
+}
+
+export interface GitHubRepoContents extends GitHubBaseContents {
   owner: {
     avatar_url: string;
   };
-  html_url: string;
-  description: string;
   language: string;
-  name: string;
 }
 
-interface GitHubOrgContents {
-  name: string;
+export interface GitHubOrgContents extends GitHubBaseContents {
   avatar_url: string;
-  html_url: string;
-  description: string;
 }
 
 export async function getRepositoryInfo(
@@ -31,4 +31,8 @@ export async function getOrganizationInfo(
   return (await fetcher(
     `https://api.github.com/orgs/${org}`
   )) as GitHubOrgContents;
+}
+
+export function removeImageNonsense(url: string): string {
+  return url.replace(/\?s\=\d*/, "");
 }
