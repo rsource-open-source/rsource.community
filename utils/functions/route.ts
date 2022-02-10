@@ -1,34 +1,24 @@
 import * as readroutes from "../../public/routes.json";
 
-type valueof<T> = T[keyof T];
-
 type RouteKeys = keyof typeof readroutes;
-type Route = valueof<RouteKeys>;
-
 type RouteMapped = {
-  [Property in RouteKeys]: string;
+  [Property in RouteKeys]: string; // `https://${string}` | `/${string}`;
 };
-
 const routes: RouteMapped = JSON.parse(JSON.stringify(readroutes));
 
-// now map it to next config routes structure
 type NextRoute = {
   source: `/${RouteKeys}`;
   destination: string;
   permanent: boolean;
 };
 
-let nextRoute: NextRoute[] = [];
-
+let nextRoutes: NextRoute[] = [];
 for (const route in routes) {
-  nextRoute.push({
-    source: `/${routes[route as unknown as RouteKeys]}`,
-    destination: route,
+  nextRoutes.push({
+    source: `/${route}`,
+    destination: routes[route as unknown as RouteKeys],
     permanent: false,
   } as NextRoute);
 }
 
-// export default function findRoute(): string | undefined {
-//   for (let key in routes)
-//     if (routes[key as unknown as Routes] === path) return key;
-// }
+export default nextRoutes;
