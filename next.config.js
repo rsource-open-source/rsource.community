@@ -1,15 +1,8 @@
-// import
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   async redirects() {
-    return [
-      {
-        source: "/test",
-        destination: "https://google.com/about",
-        permanent: false,
-      },
-    ];
+    return ({ nextRoutes } = await import("./utils/functions/route"));
   },
 };
 
