@@ -3,8 +3,7 @@ import Metadata from "../utils/components/metadata";
 import Head from "next/head";
 import { colors } from "../utils/constants";
 
-export default function renda(): JSX.Element {
-  // setTimeout(() => teleporter(), 10000);
+export default function page(): JSX.Element {
   return (
     <>
       <Head>

@@ -1,10 +1,9 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import figlet from "figlet";
+import generateTitle from "../utils/functions/generate_title";
 
 const Home: NextPage = () => {
-  console.log(window);
-  let title = figlet.textSync("rsource.community", "Slant");
+  let title = generateTitle("rsource.community");
   return (
     <div>
       <Head>
@@ -14,7 +13,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <p>{title}</p>
+        <pre>{title}</pre>
       </main>
     </div>
   );
