@@ -1,4 +1,4 @@
-const withTM = require("next-transpile-modules")(["figlet"]);
+// const withTM = require("next-transpile-modules")([""]);
 
 const routes = {
   records: "https://github.com/rsource-open-source/rsource-records",
@@ -29,16 +29,16 @@ for (const route in routes) {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  webpack: (config, { isServer }) => {
-    if (isServer) return;
-    config.node = {
-      fs: "empty",
-    };
-  },
+  // webpack: (config, { isServer }) => {
+  //   if (isServer) return;
+  //   config.node = {
+  //     fs: "empty",
+  //   };
+  // },
   reactStrictMode: true,
   async redirects() {
     return nextRoutes;
   },
 };
 
-module.exports = withTM({ nextConfig });
+module.exports = nextConfig;

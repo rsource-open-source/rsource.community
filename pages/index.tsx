@@ -1,9 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import generateTitle from "../utils/functions/generate_title";
 
 const Home: NextPage = () => {
-  let title = generateTitle("rsource.community");
   return (
     <div>
       <Head>
@@ -13,7 +11,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <pre>{title}</pre>
+        <pre>rsource.community</pre>
       </main>
     </div>
   );
