@@ -1,5 +1,3 @@
-// const withTM = require("next-transpile-modules")([""]);
-
 export const routes = {
   records: "https://github.com/rsource-open-source/rsource-records",
   android: "https://github.com/rsource-open-source/rsource-android",
@@ -16,29 +14,3 @@ export const routes = {
   discord: "https://discord.gg/2uFfQ3WYNX",
   organization: "https://github.com/rsource-open-source",
 };
-
-let nextRoutes = [];
-
-for (const route in routes) {
-  nextRoutes.push({
-    source: `/${route}`,
-    destination: routes[route],
-    permanent: false,
-  });
-}
-
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  // webpack: (config, { isServer }) => {
-  //   if (isServer) return;
-  //   config.node = {
-  //     fs: "empty",
-  //   };
-  // },
-  reactStrictMode: true,
-  async redirects() {
-    return nextRoutes;
-  },
-};
-
-module.exports = nextConfig;

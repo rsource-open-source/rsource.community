@@ -1,5 +1,9 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import { routes } from "../public/routes";
+
+let mappedRoutes = "";
+for (const [k, v] of Object.entries(routes)) mappedRoutes += `\n${k} => ${v}`;
 
 const Home: NextPage = () => {
   return (
@@ -11,7 +15,11 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <pre>rsource.community</pre>
+        <pre>
+          <h1>rsource community</h1>
+          <p>available redirects:</p>
+          <p>{mappedRoutes}</p>
+        </pre>
       </main>
     </div>
   );
