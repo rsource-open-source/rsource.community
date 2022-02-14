@@ -57,7 +57,7 @@ const Home: NextPage = () => {
           <p>available redirects:</p>
           <p>{mappedRoutes}</p>
           <a href="https://www.digitalocean.com/?refcode=02e293f3a59e&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg" alt="DigitalOcean Referral Badge" /></a>
-          <a href='https://docs.digitalocean.com/products/accounts/referrals/'><br>why is this here?</a>
+          <a href='https://docs.digitalocean.com/products/accounts/referrals/'><br></br>why is this here?</a>
         </pre>
         {/* <canvas id="bg"></canvas> */}
       </main>
