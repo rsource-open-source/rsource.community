@@ -1,9 +1,46 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { routes } from "../public/routes";
+// import * as THREE from "three";
 
-let mappedRoutes = "";
-for (const [k, v] of Object.entries(routes)) mappedRoutes += `\n${k} => ${v}`;
+let mappedRoutes: JSX.Element[] = [];
+for (const [k, v] of Object.entries(routes))
+  mappedRoutes.push(<a href={v}>{`\n${k} => ${v}`}</a>); // `\n${k} => ${v}`
+
+// if (typeof window !== "undefined") {
+//   const scene = new THREE.Scene();
+
+//   const camera = new THREE.PerspectiveCamera(
+//     75,
+//     window.innerWidth / window.innerHeight,
+//     0.1,
+//     1000
+//   );
+//   const renderer = new THREE.WebGLRenderer({
+//     canvas: document.querySelector("#bg")!,
+//   });
+
+//   renderer.setPixelRatio(window.devicePixelRatio);
+//   renderer.setSize(window.innerWidth, window.innerHeight);
+//   camera.position.setZ(35);
+
+//   renderer.render(scene, camera);
+
+//   const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
+//   const material = new THREE.MeshBasicMaterial({
+//     color: 0xffffff,
+//     wireframe: true,
+//   });
+
+//   const mesh = new THREE.Mesh(geometry, material);
+
+//   const grid = new THREE.GridHelper(100, 10);
+
+//   // mesh.rotation.x = 1.5708;
+
+//   scene.add(mesh, grid);
+//   renderer.render(scene, camera);
+// }
 
 const Home: NextPage = () => {
   return (
@@ -20,6 +57,7 @@ const Home: NextPage = () => {
           <p>available redirects:</p>
           <p>{mappedRoutes}</p>
         </pre>
+        {/* <canvas id="bg"></canvas> */}
       </main>
     </div>
   );

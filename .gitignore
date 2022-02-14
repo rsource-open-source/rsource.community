@@ -38,3 +38,7 @@ yarn-error.log*
 
 # env
 .env
+
+# 3d
+public/*.blend
+public/*.blend1
