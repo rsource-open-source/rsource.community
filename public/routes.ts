@@ -3,6 +3,7 @@ export const routes = {
   android: "https://github.com/rsource-open-source/rsource-android",
   redirect: "https://github.com/rsource-open-source/rsource-redirect",
   api: "https://github.com/rsource-open-source/rsource-api",
+  "api-docs": "https://postman.com/rsource-open-source/workspace/rsource-api",
   twitch: "https://github.com/rsource-open-source/rsource-twitch",
   pylon: "https://github.com/rsource-open-source/server-pylon",
   website: "https://github.com/rsource-open-source/website",
