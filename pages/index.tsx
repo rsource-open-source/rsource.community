@@ -48,10 +48,16 @@ const Home: NextPage = () => {
     <div>
       <Head>
         <title>rsource community</title>
-        <meta content="rsource community website" property="og:title"></meta>
-        <meta content="https://rsource.community/" property="og:url"></meta>
         <meta
-          content="https://avatars.githubusercontent.com/u/85522499"
+          content="rsource community: A StrafesNET Improvement Project"
+          property="og:title"
+        ></meta>
+        <meta content="https://rsource.community/" property="og:url"></meta>
+        <meta property="og:type" content="website"></meta>
+        <meta
+          content={
+            "https://media.discordapp.net/attachments/768093403421736980/945439531073679410/rsource_banner.png"
+          }
           property="og:image"
         ></meta>
         <meta
@@ -59,18 +65,14 @@ const Home: NextPage = () => {
           data-react-helmet="true"
           name="theme-color"
         ></meta>
+        <meta name="twitter:card" content="summary_large_image"></meta>
         <meta
           content="https://github.com/rsource-open-source/"
           property="og:url"
         ></meta>
         <meta
-          content="https://avatars.githubusercontent.com/u/85522499?s=400&u=8f3f09fc81984d0d665e1b52a250552a2f682a9a"
-          property="og:image"
-        ></meta>
-        <meta
-          content="#171a21"
-          data-react-helmet="true"
-          name="theme-color"
+          content="rsource is a project started by insyri, aimed to create services around the StrafesNET ecosystem, including map development and game integration."
+          property="og:description"
         ></meta>
         <link rel="icon" href="/favicon.ico" />
       </Head>
