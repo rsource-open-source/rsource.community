@@ -61,7 +61,7 @@ const Home: NextPage = () => {
         <meta
           property="og:image"
           content={
-            "https://media.discordapp.net/attachments/768093841793351723/945448961832005642/rsource_banner.png"
+            "https://media.discordapp.net/attachments/768093841793351723/945465682001281084/rsource_banner.png"
           }
         ></meta>
         <meta
