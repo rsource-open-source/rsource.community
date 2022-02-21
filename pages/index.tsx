@@ -48,8 +48,17 @@ const Home: NextPage = () => {
     <div>
       <Head>
         <title>rsource community</title>
-        <meta content="rsource community" property="og:title"></meta>
-        <meta content="rsource" property="og:description"></meta>
+        <meta content="rsource community website" property="og:title"></meta>
+        <meta content="https://rsource.community/" property="og:url"></meta>
+        <meta
+          content="https://avatars.githubusercontent.com/u/85522499"
+          property="og:image"
+        ></meta>
+        <meta
+          content="#171a21"
+          data-react-helmet="true"
+          name="theme-color"
+        ></meta>
         <meta
           content="https://github.com/rsource-open-source/"
           property="og:url"

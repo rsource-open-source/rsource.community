@@ -7,6 +7,15 @@ html {
   justify-content: center;
   width: 100%;
   height: 100%;
+  line-height: 1.1em;
+}
+
+a:visited {
+  color: rgb(0, 71, 141);
+}
+
+a {
+  color: rgb(0, 71, 141);
 }
 
 /* canvas {
