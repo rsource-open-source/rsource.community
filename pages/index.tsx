@@ -49,14 +49,14 @@ const Home: NextPage = () => {
       <Head>
         <title>rsource community</title>
         <meta
-          content="rsource community: A StrafesNET Improvement Project"
+          content="rsource: A StrafesNET Improvement Project"
           property="og:title"
         ></meta>
         <meta content="https://rsource.community/" property="og:url"></meta>
         <meta property="og:type" content="website"></meta>
         <meta
           content={
-            "https://media.discordapp.net/attachments/768093403421736980/945439531073679410/rsource_banner.png"
+            "https://media.discordapp.net/attachments/768093841793351723/945448961832005642/rsource_banner.png"
           }
           property="og:image"
         ></meta>
