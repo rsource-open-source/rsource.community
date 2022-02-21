@@ -42,3 +42,6 @@ yarn-error.log*
 # 3d
 public/*.blend
 public/*.blend1
+
+# IDK
+.vs

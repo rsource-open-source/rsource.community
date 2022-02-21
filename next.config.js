@@ -36,6 +36,9 @@ const nextConfig = {
   //     fs: "empty",
   //   };
   // },
+  images: {
+    domains: ["web-platforms.sfo2.cdn.digitaloceanspaces.com"],
+  },
   reactStrictMode: true,
   async redirects() {
     return nextRoutes;

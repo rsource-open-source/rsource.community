@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { routes } from "../public/routes";
+import Image from "next/image";
 // import * as THREE from "three";
 
 let mappedRoutes: JSX.Element[] = [];
@@ -70,9 +71,11 @@ const Home: NextPage = () => {
           <p>available redirects:</p>
           <p>{mappedRoutes}</p>
           <a href="https://www.digitalocean.com/?refcode=02e293f3a59e&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge">
-            <img
+            <Image
               src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg"
               alt="DigitalOcean Referral Badge"
+              width={200}
+              height={65}
             />
           </a>
           <a href="https://docs.digitalocean.com/products/accounts/referrals/">
