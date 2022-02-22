@@ -14,4 +14,5 @@ export const routes = {
   projects: "https://github.com/orgs/rsource-open-source/projects/3",
   discord: "https://discord.gg/2uFfQ3WYNX",
   organization: "https://github.com/rsource-open-source",
+  roblox: "https://www.roblox.com/groups/10125873/rsource-community",
 };
