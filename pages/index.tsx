@@ -45,7 +45,7 @@ for (const [k, v] of Object.entries(routes))
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <>
       <Head>
         <title>rsource community</title>
         <meta
@@ -93,7 +93,7 @@ const Home: NextPage = () => {
         </div>
         {/* <canvas id="bg"></canvas> */}
       </main>
-    </div>
+    </>
   );
 };
 
