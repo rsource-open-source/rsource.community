@@ -1,5 +1,3 @@
-// const withTM = require("next-transpile-modules")([""]);
-
 const routes = {
   records: "https://github.com/rsource-open-source/rsource-records",
   android: "https://github.com/rsource-open-source/rsource-android",
