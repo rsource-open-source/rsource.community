@@ -1,15 +1,6 @@
-// const rsource_routes = require("rsource-routes");
-// console.log(rsource_routes);
+let redirectRoutes = [];
 
-let nextRoutes = [];
-
-for (const route in routes) {
-  nextRoutes.push({
-    source: `/${route}`,
-    destination: routes[route],
-    permanent: false,
-  });
-}
+// let redirects = await ghroutes.getGitHubRepos(process.env.GITHUB_TOKEN);
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -24,7 +15,18 @@ const nextConfig = {
   },
   reactStrictMode: true,
   async redirects() {
-    return nextRoutes;
+    return await ghroutes
+      .getrsourcePrefixedRepos(
+        await ghroutes.getGitHubRepos(process.env.GITHUB_TOKEN),
+        true
+      )
+      .ghredirects.forEach((n) => {
+        redirectRoutes.push({
+          source: `/repo/${n.name}`,
+          destination: n.url,
+          permanent: true,
+        });
+      });
   },
 };
 
