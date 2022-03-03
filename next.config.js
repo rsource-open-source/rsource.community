@@ -1,4 +1,5 @@
-let redirectRoutes = [];
+const { readFileSync } = require("fs");
+const query = readFileSync("./public/request.gql", "utf8");
 
 // let redirects = await ghroutes.getGitHubRepos(process.env.GITHUB_TOKEN);
 
@@ -15,18 +16,23 @@ const nextConfig = {
   },
   reactStrictMode: true,
   async redirects() {
-    return await ghroutes
-      .getrsourcePrefixedRepos(
-        await ghroutes.getGitHubRepos(process.env.GITHUB_TOKEN),
-        true
-      )
-      .ghredirects.forEach((n) => {
-        redirectRoutes.push({
-          source: `/repo/${n.name}`,
-          destination: n.url,
-          permanent: true,
-        });
+    let redirectRoutes = [];
+
+    const { ghroutes } = await import("rsource-routes");
+    let waitedghoutes = await ghroutes.getrsourcePrefixedRepos(
+      await ghroutes.getGitHubRepos(process.env.GITHUB_TOKEN, query),
+      true
+    );
+
+    waitedghoutes.forEach((n) => {
+      redirectRoutes.push({
+        source: `/repo/${n.name}`,
+        destination: n.url,
+        permanent: true,
       });
+    });
+    console.log(redirectRoutes);
+    return redirectRoutes;
   },
 };
 
