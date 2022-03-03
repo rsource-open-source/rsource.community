@@ -2,7 +2,7 @@
   "name": "rsource.community",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "tsc utils/routes.ts && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
