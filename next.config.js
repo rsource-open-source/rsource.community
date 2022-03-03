@@ -18,11 +18,16 @@ const nextConfig = {
   async redirects() {
     let redirectRoutes = [];
 
-    const { ghroutes } = await import("rsource-routes");
-    let waitedghoutes = await ghroutes.getrsourcePrefixedRepos(
+    const { ghroutes, aliases, routes } = await import("rsource-routes");
+
+    let waitedghoutes = await ghroutes.formatRepos(
       await ghroutes.getGitHubRepos(process.env.GITHUB_TOKEN, query),
       true
     );
+
+    waitedghoutes.forEach((n) => {
+      if (n.name.startsWith("rsource-")) n.name = n.name.slice(8);
+    });
 
     waitedghoutes.forEach((n) => {
       redirectRoutes.push({
@@ -31,6 +36,29 @@ const nextConfig = {
         permanent: true,
       });
     });
+
+    aliases.aliases.forEach((n, k) => {
+      redirectRoutes.push({
+        source: `/${k}`,
+        destination: `/${n}`,
+        permanent: true,
+      });
+    });
+
+    Object.keys(routes.routes).forEach((n) => {
+      redirectRoutes.push({
+        source: `/${n}`,
+        destination: routes.routes[n],
+        permanent: true,
+      });
+    });
+
+    redirectRoutes.push({
+      source: "/repo",
+      destination: "https://github.com/orgs/rsource-open-source/repositories",
+      permanent: true,
+    });
+
     console.log(redirectRoutes);
     return redirectRoutes;
   },

@@ -14,7 +14,7 @@
     "node-fetch": "^3.2.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "rsource-routes": "^0.0.11",
+    "rsource-routes": "^0.0.12",
     "three": "^0.137.5"
   },
   "devDependencies": {
