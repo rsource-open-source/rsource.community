@@ -2,8 +2,22 @@ import type { NextPage } from "next";
 import Head from "next/head";
 // import { routes } from "../public/routes";
 import Image from "next/image";
+import redirectRoutes from "../utils/routes";
+import { readFileSync } from "fs";
+import { useState } from "react";
+
+const query = readFileSync("./public/request.gql", "utf8");
 
 const Home: NextPage = () => {
+  // let redirects: string = "";
+
+  // async function showRedirects() {
+  //   return await redirectRoutes(process.env.GITHUB_TOKEN!, query).then((p) => {
+  //     p.join("\n");
+  //   })
+  // }
+
+  const [redirects, showRedirects] = useState("idfk");
   return (
     <>
       <Head>
@@ -37,7 +51,7 @@ const Home: NextPage = () => {
           <pre>
             <h1>rsource community</h1>
             <p>available redirects:</p>
-            <p>{"something..."}</p>
+            <p>{}</p>
             <a href="https://www.digitalocean.com/?refcode=02e293f3a59e&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge">
               <Image
                 src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg"

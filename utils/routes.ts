@@ -5,7 +5,7 @@ import { Redirect } from "next/dist/lib/load-custom-routes";
 export default async function redirectRoutes(
   oauth: string,
   query: string
-): Promise<Redirect[] | null> {
+): Promise<Redirect[]> {
   let redirectRoutes: Redirect[] = [];
 
   const { ghroutes, aliases, routes } = await import("rsource-routes");
