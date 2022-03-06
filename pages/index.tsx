@@ -36,7 +36,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div className="redirects">
+        <div>
           <pre>
             <h1>rsource community</h1>
             <p>available redirects:</p>

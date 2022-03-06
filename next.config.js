@@ -14,9 +14,9 @@ const nextConfig = {
     domains: ["web-platforms.sfo2.cdn.digitaloceanspaces.com"],
   },
   reactStrictMode: true,
-  async redirects() {
-    return await redirectRoutes(process.env.GITHUB_TOKEN, query, true);
-  },
+  // async redirects() {
+  //   return await redirectRoutes(process.env.GITHUB_TOKEN, query, true);
+  // },
   typescript: {
     ignoreBuildErrors: false,
   },
