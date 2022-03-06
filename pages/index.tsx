@@ -1,23 +1,12 @@
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
-// import { routes } from "../public/routes";
 import Image from "next/image";
-import redirectRoutes from "../utils/routes";
-import { readFileSync } from "fs";
-import { useState } from "react";
+// import redirectRoutes from "../utils/routes";
+// import { readFileSync } from "fs";
 
-const query = readFileSync("./public/request.gql", "utf8");
+// const query = readFileSync("./public/request.gql", "utf8");
 
 const Home: NextPage = () => {
-  // let redirects: string = "";
-
-  // async function showRedirects() {
-  //   return await redirectRoutes(process.env.GITHUB_TOKEN!, query).then((p) => {
-  //     p.join("\n");
-  //   })
-  // }
-
-  const [redirects, showRedirects] = useState("idfk");
   return (
     <>
       <Head>
@@ -65,7 +54,6 @@ const Home: NextPage = () => {
             </a>
           </pre>
         </div>
-        {/* <canvas id="bg"></canvas> */}
       </main>
     </>
   );
