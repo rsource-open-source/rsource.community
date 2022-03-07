@@ -1,10 +1,9 @@
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import { ghroutes } from "rsource-routes";
 // import redirectRoutes from "../utils/routes";
 // import { readFileSync } from "fs";
-
-// const query = readFileSync("./public/request.gql", "utf8");
 
 const Home: NextPage = () => {
   return (
@@ -57,6 +56,21 @@ const Home: NextPage = () => {
       </main>
     </>
   );
+};
+
+export const getStaticProps = async (): Promise<GetStaticProps> => {
+  const { readFileSync } = await import("fs");
+  const query = readFileSync("./public/request.gql", "utf8");
+
+  const res = await ghroutes.getGitHubRepos(process.env.GITHUB_TOKEN!, query);
+  let props: { name: string; url: string }[] = [];
+  res.organization.repositories.edges.forEach(({ node }) => {
+    props.push({ name: node.name, url: node.url });
+  });
+
+  return {
+    props,
+  };
 };
 
 export default Home;
