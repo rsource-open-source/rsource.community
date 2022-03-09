@@ -11,7 +11,7 @@ const nextConfig = {
   //   };
   // },
   images: {
-    domains: ["web-platforms.sfo2.cdn.digitaloceanspaces.com"],
+    domains: ["web-platforms.sfo2.cdn.digitaloceanspaces.com", "aixxe.net"],
   },
   reactStrictMode: true,
   // async redirects() {
