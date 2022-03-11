@@ -46,6 +46,7 @@ const Home: NextPage = () => {
               </div>
             </div>
             <main>
+              {/* top */}
               <div className="grid gap-4 grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5">
                 <a href="https://rsource.community/github">
                   <div className="bg-slate-900 rounded-md border border-slate-700 hover:border-slate-600 hover:cursor-pointer h-max mb-4">
@@ -68,34 +69,8 @@ const Home: NextPage = () => {
                   </div>
                 </a>
               </div>
+              {/* blocks */}
               <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-4">
-                <div className="h-[18.5rem] bg-slate-900 rounded-md border border-slate-700 hover:border-slate-600 hover:cursor-pointer">
-                  <div className="bg-no-repeat max-h-[7.5rem] overflow-hidden align-middle">
-                    <Image
-                      className="min-h-[8rem] mx-auto object-cover rounded-t-md"
-                      src={
-                        "https://aixxe.net/uploads/2018/12/V08Cpw63tJmQd5iGrzillG2FFPrMvjdQ8I5anvpr.jpeg"
-                      }
-                      alt="surf_It_omnific"
-                      width={1416}
-                      height={493}
-                    />
-                  </div>
-                  <div className="p-5">
-                    <h2 className="truncate">rsource css server</h2>
-                    <h3 className="text-slate-400 text-xs pb-3 truncate">
-                      <a href="" className="hover:underline">
-                        steam://connect/
-                        <wbr />
-                        77.99.74.252:27015
-                      </a>
-                    </h3>
-                    <p className="italic text-sm line-clamp-4">
-                      <span className="not-italic">Current Map:</span>
-                      surf_It_omnific
-                    </p>
-                  </div>
-                </div>
                 <Block
                   img={
                     "https://repository-images.githubusercontent.com/448160350/fb5e5009-3d24-4c31-ac01-53b229b876bc"
@@ -105,21 +80,6 @@ const Home: NextPage = () => {
                   notItalic="🌌"
                   italic="Teleport to specific servers and public VIPs in the StrafesNET games."
                 />
-                <div className="h-[18.5rem] bg-slate-900 rounded-md border border-slate-700 hover:border-slate-600 hover:cursor-pointer">
-                  <div className="max-h-[7.5rem] rounded-t-md bg-slate-1100 h-[8rem]"></div>
-                  <div className="p-5">
-                    <h2>lorem ipsum dolor</h2>
-                    <h3 className="text-slate-400 text-xs pb-3 truncate">
-                      <a href="" className="hover:underline">
-                        http://sit-amet.consectetur
-                      </a>
-                    </h3>
-                    <p className="italic text-sm">
-                      elit, sed do eiusmod tempor incididunt ut labore et dolore
-                      magna aliqua.
-                    </p>
-                  </div>
-                </div>
               </div>
             </main>
           </div>
