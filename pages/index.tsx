@@ -1,11 +1,8 @@
-import type { GetStaticProps, NextPage } from "next";
+import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { ghroutes } from "rsource-routes";
-import Block from "../utils/components/block";
-
-// import redirectRoutes from "../utils/routes";
-// import { readFileSync } from "fs";
+import { tw } from "twind";
+import Block, { putIntoimgClass } from "../utils/components/block";
 
 const Home: NextPage = () => {
   return (
@@ -50,7 +47,7 @@ const Home: NextPage = () => {
               <div className="grid gap-4 grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5">
                 <a href="https://rsource.community/github">
                   <div className="bg-slate-900 rounded-md border border-slate-700 hover:border-slate-600 hover:cursor-pointer h-max mb-4">
-                    <div className="flex grid-cols-2 gap-4 bg-center bg-cover bg-no-repeat truncate p-5 rounded-md bg-[url('./../public/assets/images/rsource_banner_notitle.png')]">
+                    <div className="flex grid-cols-2 gap-4 bg-center bg-cover bg-no-repeat truncate p-5 rounded-md bg-[url('./../public/images/rsource_banner_notitle.png')]">
                       <div className="flex-none bg-gray-500 rounded-full w-6 h-6"></div>
                       <div className="grow invisible sm:visible">
                         rsource discord server
@@ -72,11 +69,11 @@ const Home: NextPage = () => {
               {/* blocks */}
               <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-4">
                 <Block
-                  img={
+                  imgClass={tw`${putIntoimgClass(
                     "https://repository-images.githubusercontent.com/448160350/fb5e5009-3d24-4c31-ac01-53b229b876bc"
-                  }
+                  )}`}
                   title="rsource redirect"
-                  link={"https://rource.community/repo/redirect/"}
+                  link="https://rource.community/repo/redirect/"
                   notItalic="🌌"
                   italic="Teleport to specific servers and public VIPs in the StrafesNET games."
                 />
