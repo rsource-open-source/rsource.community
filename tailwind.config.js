@@ -5,9 +5,10 @@ module.exports = {
       colors: {
         slate: {
           1000: "#0b101e",
+          1100: "#070a13",
         },
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/line-clamp")],
 };
