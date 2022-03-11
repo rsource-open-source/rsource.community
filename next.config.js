@@ -1,5 +1,5 @@
 const { readFileSync } = require("fs");
-const query = readFileSync("./public/request.gql", "utf8");
+const query = readFileSync("./request.gql", "utf8");
 const redirectRoutes = require("./utils/routes").default;
 
 /** @type {import('next').NextConfig} */

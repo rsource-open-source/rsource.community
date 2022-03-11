@@ -36,9 +36,9 @@ type RequireAtLeastOne<T> = {
 // }
 
 interface BlockProps {
-  img: URL;
+  img: string;
   title: string;
-  link: URL;
+  link: string;
   notItalic?: string;
   italic?: string;
 }
@@ -50,17 +50,15 @@ const Block: React.FC<BlockProps> = ({
   notItalic,
   italic,
 }) => {
-  const j = `h-[7.5rem] bg-center bg-cover bg-no-repeat bg-[url('${img.href}')]`;
+  const j = `h-[7.5rem] bg-center bg-cover bg-no-repeat bg-[url('${img}')]`;
   return (
-    <a href={link.href}>
+    <a href={link}>
       <div className="h-[18.5rem] bg-slate-900 rounded-md border border-slate-700 hover:border-slate-600 hover:cursor-pointer">
         <div className={j}></div>
         <div className="p-5">
           <h2 className="truncate">rsource redirect</h2>
           <h3 className="text-slate-400 text-xs pb-3 truncate">
-            <a href="" className="hover:underline">
-              {title}
-            </a>
+            <p className="hover:underline">{title}</p>
           </h3>
           <p className="italic text-sm line-clamp-4">
             <span className="not-italic">{notItalic}</span>

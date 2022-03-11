@@ -27,7 +27,7 @@ type Props = {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { readFileSync } = await import("fs");
-  const query = readFileSync("./public/request.gql", "utf8");
+  const query = readFileSync("./request.gql", "utf8");
   const routeLib = await import("rsource-routes");
   const redirects = await routeLib.ghroutes.getGitHubRepos(
     process.env.GITHUB_TOKEN!,
@@ -57,7 +57,7 @@ export const getStaticProps = async ({
   props: { redirect: any };
 }) => {
   const { readFileSync } = await import("fs");
-  const query = readFileSync("./public/request.gql", "utf8");
+  const query = readFileSync("./request.gql", "utf8");
   const routeLib = await import("rsource-routes");
   const names = routeLib.ghroutes.getGitHubRepos(
     process.env.GITHUB_TOKEN!,

@@ -32,24 +32,24 @@ const Home: NextPage = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <body className="flex flex-col">
+      <div className="flex flex-col">
         <div className="font-mono text-cyan-50 h-screen">
           <div className="p-10">
             <div>
               <header className="text-2xl pb-5">rsource.community</header>
               <div>
-                <span className="invisible sm:visible">sm&nbsp;</span>
-                <span className="invisible md:visible">md&nbsp;</span>
-                <span className="invisible lg:visible">lg&nbsp;</span>
-                <span className="invisible xl:visible">xl&nbsp;</span>
-                <span className="invisible 2xl:visible">2xl&nbsp;</span>
+                <span className="invisible sm:visible">sm </span>
+                <span className="invisible md:visible">md </span>
+                <span className="invisible lg:visible">lg </span>
+                <span className="invisible xl:visible">xl </span>
+                <span className="invisible 2xl:visible">2xl </span>
               </div>
             </div>
             <main>
               <div className="grid gap-4 grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5">
-                <a href="">
+                <a href="https://rsource.community/github">
                   <div className="bg-slate-900 rounded-md border border-slate-700 hover:border-slate-600 hover:cursor-pointer h-max mb-4">
-                    <div className="flex grid-cols-2 gap-4 bg-center bg-cover bg-no-repeat truncate p-5 rounded-md bg-[url('https://camo.githubusercontent.com/87de4e32543ffa21078137714cac251eb86315f43fa3c1d2e99bba50ea42f742/68747470733a2f2f6d656469612e646973636f72646170702e6e65742f6174746163686d656e74732f3736383039333834313739333335313732332f3934353436373036323230383333313830362f72736f757263655f62616e6e65722e706e67')]">
+                    <div className="flex grid-cols-2 gap-4 bg-center bg-cover bg-no-repeat truncate p-5 rounded-md bg-[url('./../public/assets/images/rsource_banner_notitle.png')]">
                       <div className="flex-none bg-gray-500 rounded-full w-6 h-6"></div>
                       <div className="grow invisible sm:visible">
                         rsource discord server
@@ -98,12 +98,10 @@ const Home: NextPage = () => {
                 </div>
                 <Block
                   img={
-                    new URL(
-                      "https://repository-images.githubusercontent.com/448160350/fb5e5009-3d24-4c31-ac01-53b229b876bc"
-                    )
+                    "https://repository-images.githubusercontent.com/448160350/fb5e5009-3d24-4c31-ac01-53b229b876bc"
                   }
                   title="rsource redirect"
-                  link={new URL("https://rsource.community/repo/redirect/")}
+                  link={"https://rource.community/repo/redirect/"}
                   notItalic="🌌"
                   italic="Teleport to specific servers and public VIPs in the StrafesNET games."
                 />
@@ -141,14 +139,14 @@ const Home: NextPage = () => {
             <p className="text-right text-xs text-slate-400">thank you</p>
           </footer>
         </div>
-      </body>
+      </div>
     </>
   );
 };
 
 // export const getStaticProps = async (): Promise<GetStaticProps> => {
 //   const { readFileSync } = await import("fs");
-//   const query = readFileSync("./public/request.gql", "utf8");
+//   const query = readFileSync("./request.gql", "utf8");
 
 //   const res = await ghroutes.getGitHubRepos(process.env.GITHUB_TOKEN!, query);
 //   let props: { name: string; url: string }[] = [];
