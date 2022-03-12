@@ -2,7 +2,7 @@ import { lineClamp } from "@twind/line-clamp";
 import { tw } from "twind";
 
 interface BlockProps {
-  imgClass: string;
+  bgurl: string;
   title: string;
   link: string;
   /**
@@ -15,7 +15,7 @@ interface BlockProps {
 }
 
 const Block: React.FC<BlockProps> = ({
-  imgClass,
+  bgurl,
   title,
   link,
   notItalic,
@@ -25,7 +25,9 @@ const Block: React.FC<BlockProps> = ({
   return (
     <a href={link}>
       <div className="h-[18.5rem] bg-slate-900 rounded-md border border-slate-700 hover:border-slate-600 hover:cursor-pointer">
-        <div className={imgClass}></div>
+        <div
+          className={`h-[7.5rem] bg-center bg-cover bg-no-repeat bg-[url('${bgurl}')]`}
+        ></div>
         <div className="p-5">
           <h2 className="truncate">{title}</h2>
           <h3 className="text-slate-400 text-xs pb-3 truncate">

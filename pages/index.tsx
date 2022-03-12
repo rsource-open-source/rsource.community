@@ -6,7 +6,7 @@ import { tw } from "twind";
 import Block, { putIntoimgClass } from "../utils/components/block";
 import HeaderBlock from "../utils/components/headerblock";
 
-const Home: NextPage = () => {
+const Home: NextPage<RepoProps> = (repoProps) => {
   return (
     <>
       <Head>
@@ -62,16 +62,45 @@ const Home: NextPage = () => {
               </div>
               {/* blocks */}
               <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-4">
-                <Block
+                {/* {function () {
+                  for (let [key] of Object.entries(repoProps)) {
+                    let repo = repoProps[key];
+                    <Block
+                      imgClass="./../public/images/rsource_banner_notitle.png"
+                      title={repo.name}
+                      link={repo.url}
+                      italic={
+                        repo.description[0].match(/\p{Emoji}/u)
+                          ? repo.description[0]
+                          : ""
+                      }
+                      notItalic={repo.description.substring(1)}
+                    />;
+                  }
+                }} */}
+                {Array(repoProps).map((repo, index) => {
+                  <Block
+                    bgurl={repo[index].url}
+                    link={repo[index].imgUrl}
+                    title={repo[index].name}
+                    italic={
+                      repo[index].description[0].match(/\p{Emoji}/u)
+                        ? repo[index].description[0]
+                        : ""
+                    }
+                    notItalic={repo[index].description.substring(1)}
+                  />;
+                })}
+                {/* <Block
                   imgClass={tw`${putIntoimgClass(
-                    "./../public/images/rsource_banner_notitle.png'"
+                    "./../public/images/rsource_banner_notitle.png"
                   )}`}
                   title="rsource redirect"
                   hyperlinkText={<>hasdsd</>}
                   link="https://rource.community/repo/redirect/"
                   notItalic="🌌"
                   italic="Teleport to specific servers and public VIPs in the StrafesNET games."
-                />
+                /> */}
               </div>
             </main>
           </div>
@@ -99,19 +128,33 @@ const Home: NextPage = () => {
   );
 };
 
-// export const getStaticProps = async (): GetStaticProps => {
-//   const { readFileSync } = await import("fs");
-//   const query = readFileSync("./request.gql", "utf8");
+interface RepoProps {
+  [key: string]: {
+    name: string;
+    url: string;
+    description: string;
+    imgUrl: string;
+  };
+}
 
-//   const res = await ghroutes.getGitHubRepos(process.env.GITHUB_TOKEN!, query);
-//   let props: { name: string; url: string }[] = [];
-//   res.organization.repositories.edges.forEach(({ node }) => {
-//     props.push({ name: node.name, url: node.url });
-//   });
+export const getStaticProps: GetStaticProps<RepoProps> = async () => {
+  const { readFileSync } = await import("fs");
+  const query = readFileSync("./request.gql", "utf8");
 
-//   return {
-//     props
-//   }
-// };
+  const res = await ghroutes.getGitHubRepos(process.env.GITHUB_TOKEN!, query);
+  let props: RepoProps = {};
+  res.organization.repositories.edges.forEach((m) => {
+    props[m.node.name] = {
+      description: m.node.description,
+      name: m.node.name,
+      url: m.node.url,
+      imgUrl: m.node.openGraphImageUrl,
+    };
+  });
+
+  return {
+    props,
+  };
+};
 
 export default Home;
