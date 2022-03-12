@@ -1,13 +1,15 @@
-// https://docs.microsoft.com/en-us/javascript/api/@azure/keyvault-certificates/requireatleastone
-type RequireAtLeastOne<T> = {
-  [K in keyof T]-?: Required<Pick<T, K>> &
-    Partial<Pick<T, Exclude<keyof T, K>>>;
-}[keyof T];
+import { lineClamp } from "@twind/line-clamp";
+import { tw } from "twind";
 
 interface BlockProps {
   imgClass: string;
   title: string;
   link: string;
+  /**
+   * why jsx? ex:
+   * <>steam://connect/<wbr />ip:port</>
+   */
+  hyperlinkText?: JSX.Element | string;
   notItalic?: string;
   italic?: string;
 }
@@ -18,18 +20,19 @@ const Block: React.FC<BlockProps> = ({
   link,
   notItalic,
   italic,
+  hyperlinkText,
 }) => {
   return (
     <a href={link}>
       <div className="h-[18.5rem] bg-slate-900 rounded-md border border-slate-700 hover:border-slate-600 hover:cursor-pointer">
         <div className={imgClass}></div>
         <div className="p-5">
-          <h2 className="truncate">rsource redirect</h2>
+          <h2 className="truncate">{title}</h2>
           <h3 className="text-slate-400 text-xs pb-3 truncate">
-            <p className="hover:underline">{title}</p>
+            <p className="hover:underline">{hyperlinkText || link}</p>
           </h3>
-          <p className="italic text-sm line-clamp-4">
-            <span className="not-italic">{notItalic + " "}</span>
+          <p className={tw`italic text-sm ${lineClamp(4)} pt-1`}>
+            <span className={tw`not-italic`}>{notItalic + " "}</span>
             {italic}
           </p>
         </div>

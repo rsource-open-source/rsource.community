@@ -1,8 +1,10 @@
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import { ghroutes } from "rsource-routes";
 import { tw } from "twind";
 import Block, { putIntoimgClass } from "../utils/components/block";
+import HeaderBlock from "../utils/components/headerblock";
 
 const Home: NextPage = () => {
   return (
@@ -34,45 +36,38 @@ const Home: NextPage = () => {
           <div className="p-10">
             <div>
               <header className="text-2xl pb-5">rsource.community</header>
-              <div>
+              {/* <div>
                 <span className="invisible sm:visible">sm </span>
                 <span className="invisible md:visible">md </span>
                 <span className="invisible lg:visible">lg </span>
                 <span className="invisible xl:visible">xl </span>
                 <span className="invisible 2xl:visible">2xl </span>
-              </div>
+              </div> */}
             </div>
             <main>
               {/* top */}
               <div className="grid gap-4 grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5">
-                <a href="https://rsource.community/github">
-                  <div className="bg-slate-900 rounded-md border border-slate-700 hover:border-slate-600 hover:cursor-pointer h-max mb-4">
-                    <div className="flex grid-cols-2 gap-4 bg-center bg-cover bg-no-repeat truncate p-5 rounded-md bg-[url('./../public/images/rsource_banner_notitle.png')]">
-                      <div className="flex-none bg-gray-500 rounded-full w-6 h-6"></div>
-                      <div className="grow invisible sm:visible">
-                        rsource discord server
-                      </div>
-                    </div>
-                  </div>
-                </a>
-                <a href="">
-                  <div className="bg-slate-900 rounded-md border border-slate-700 hover:border-slate-600 hover:cursor-pointer h-max mb-4">
-                    <div className="flex grid-cols-2 gap-4 truncate bg-center bg-cover bg-no-repeat p-5 rounded-md bg-[url('https://github.githubassets.com/images/modules/site/home/globe.jpg')]">
-                      <div className="flex-none bg-gray-500 rounded-full w-6 h-6"></div>
-                      <div className="grow invisible sm:visible">
-                        rsource github organization
-                      </div>
-                    </div>
-                  </div>
-                </a>
+                <HeaderBlock
+                  backgroundImg="./../public/images/rsource_banner_notitle.png"
+                  link="https://rsource.community/discord"
+                  title="rsource discord server"
+                  icon="./../public/images/borrowed/github_mark.png"
+                />
+                <HeaderBlock
+                  backgroundImg="./../public/images/borrowed/github_globe.png"
+                  icon="./../public/images/borrowed/github_mark.png"
+                  title="rsource github organization"
+                  link="https://rsource.community/github"
+                />
               </div>
               {/* blocks */}
               <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-4">
                 <Block
                   imgClass={tw`${putIntoimgClass(
-                    "https://repository-images.githubusercontent.com/448160350/fb5e5009-3d24-4c31-ac01-53b229b876bc"
+                    "./../public/images/rsource_banner_notitle.png'"
                   )}`}
                   title="rsource redirect"
+                  hyperlinkText={<>hasdsd</>}
                   link="https://rource.community/repo/redirect/"
                   notItalic="🌌"
                   italic="Teleport to specific servers and public VIPs in the StrafesNET games."
@@ -82,7 +77,10 @@ const Home: NextPage = () => {
           </div>
           <footer className="mt-auto bg-slate-1100 border-slate-800 border-t p-14">
             brought to you by{" "}
-            <a href="" className="text-[#0069FF] hover:underline">
+            <a
+              href="localhost:3000/referral"
+              className="text-[#0069FF] hover:underline"
+            >
               digitalocean
             </a>
             <br />
@@ -101,7 +99,7 @@ const Home: NextPage = () => {
   );
 };
 
-// export const getStaticProps = async (): Promise<GetStaticProps> => {
+// export const getStaticProps = async (): GetStaticProps => {
 //   const { readFileSync } = await import("fs");
 //   const query = readFileSync("./request.gql", "utf8");
 
@@ -112,8 +110,8 @@ const Home: NextPage = () => {
 //   });
 
 //   return {
-//     props,
-//   };
+//     props
+//   }
 // };
 
 export default Home;
