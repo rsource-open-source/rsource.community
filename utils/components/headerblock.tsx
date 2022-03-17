@@ -1,5 +1,3 @@
-import { tw } from "twind";
-
 interface HeaderBlockProps {
   backgroundImg: string;
   /**
@@ -8,6 +6,7 @@ interface HeaderBlockProps {
   icon: string;
   title: string;
   link: string;
+  iconWidth: number;
 }
 
 const HeaderBlock: React.FC<HeaderBlockProps> = ({
@@ -15,6 +14,7 @@ const HeaderBlock: React.FC<HeaderBlockProps> = ({
   title,
   link,
   icon,
+  iconWidth,
 }) => {
   return (
     <a href={link}>
@@ -23,7 +23,7 @@ const HeaderBlock: React.FC<HeaderBlockProps> = ({
           className={`flex grid-cols-2 gap-4 bg-center bg-cover bg-no-repeat truncate p-5 rounded-md bg-[url('${backgroundImg}')]`}
         >
           <div
-            className={`flex-none border border-gray-500 w-6 h-6 bg-[url('${icon}')]`}
+            className={`w-${iconWidth} h-6 bg-center bg-cover  bg-[url('${icon}')]`}
           ></div>
           <div className="grow invisible sm:visible">{title}</div>
         </div>
