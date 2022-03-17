@@ -1,6 +1,8 @@
 // import { lineClamp } from "@twind/line-clamp";
 // import { tw } from "twind";
 
+import { tw } from "twind";
+
 interface BlockProps {
   bgurl: string;
   title: string;
@@ -24,10 +26,12 @@ const Block = ({
 }: BlockProps) => {
   return (
     <>
-      <p>{bgurl + title + link + notItalic + italic + hyperlinkText}</p>
-      {/* <a href={link}>
+      {/* <p>{bgurl + title + link + notItalic + italic + hyperlinkText}</p> */}
+      <a href={link}>
         <div className="h-[18.5rem] bg-slate-900 rounded-md border border-slate-700 hover:border-slate-600 hover:cursor-pointer">
-          <div className={`h-[7.5rem] bg-center bg-cover bg-no-repeat`}></div>
+          <div
+            className={tw`h-[7.5rem] bg-center bg-cover bg-no-repeat bg-[url('${bgurl}')]`}
+          ></div>
           <div className="p-5">
             <h2 className="truncate">{title}</h2>
             <h3 className="text-slate-400 text-xs pb-3 truncate">
@@ -39,7 +43,7 @@ const Block = ({
             </p>
           </div>
         </div>
-      </a> */}
+      </a>
     </>
   );
 };

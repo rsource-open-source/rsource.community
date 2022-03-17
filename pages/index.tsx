@@ -89,7 +89,7 @@ const Home: NextPage<RepoProps> = (repoProps) => {
                     />;
                   }
                 }} */}
-                <FunctionWithParameter parameter="test" />
+                {/* <FunctionWithParameter parameter="test" /> */}
                 {/* <Block
                   bgurl={Object.values(repoProps)[0].url}
                   link={Object.values(repoProps)[0].imgUrl}
@@ -106,12 +106,13 @@ const Home: NextPage<RepoProps> = (repoProps) => {
                   )}
                 />
                 ; */}
-                {Object.values(repoProps).map((repo) => {
-                  <>
-                    <p>{repo}</p>
+                {Object.values(repoProps).map<JSX.Element>((repo) => {
+                  // return <p key={repo.name}>{JSON.stringify(repo)}</p>;
+                  return (
                     <Block
-                      bgurl={repo.url}
-                      link={repo.imgUrl}
+                      key={repo.name}
+                      bgurl={repo.imgUrl}
+                      link={repo.url}
                       title={repo.name}
                       italic={
                         repo.description[0].match(/\p{Emoji}/u)
@@ -122,8 +123,7 @@ const Home: NextPage<RepoProps> = (repoProps) => {
                         repo.description.indexOf(" ") + 1
                       )}
                     />
-                    ;
-                  </>;
+                  );
                 })}
                 {/* <Block
                   imgClass={tw`${putIntoimgClass(
