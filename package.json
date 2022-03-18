@@ -3,21 +3,18 @@
   "private": true,
   "scripts": {
     "dev": "tsc utils/routes.ts && next dev",
-    "build": "next build",
-    "start": "next start",
+    "build": "tsc utils/routes.ts && next build",
+    "start": "tsc utils/routes.ts && next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "@twind/line-clamp": "^0.1.1",
     "@types/three": "^0.137.0",
     "axios": "^0.25.0",
     "next": "12.1.0",
-    "node-fetch": "^3.2.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "rsource-routes": "^0.0.13",
-    "three": "^0.137.5",
-    "twind": "^0.16.16"
+    "three": "^0.137.5"
   },
   "devDependencies": {
     "@tailwindcss/line-clamp": "^0.3.1",
