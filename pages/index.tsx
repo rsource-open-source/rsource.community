@@ -28,19 +28,13 @@ const Home: NextPage<RepoProps> = (repoProps) => {
         <meta content="#171a21" data-react-helmet="true" name="theme-color" />
         <meta name="twitter:card" content="summary_large_image" />
         <link rel="icon" href="/favicon.ico" />
+        <meta lang="en" />
       </Head>
       <div className="flex flex-col">
         <div className="font-mono text-cyan-50 h-screen">
           <div className="p-10">
             <div>
               <header className="text-2xl pb-5">rsource.community</header>
-              {/* <div>
-                <span className="invisible sm:visible">sm </span>
-                <span className="invisible md:visible">md </span>
-                <span className="invisible lg:visible">lg </span>
-                <span className="invisible xl:visible">xl </span>
-                <span className="invisible 2xl:visible">2xl </span>
-              </div> */}
             </div>
             <main>
               <div className="grid gap-4 grid-cols-2">
