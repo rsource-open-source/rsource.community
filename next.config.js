@@ -1,33 +1,6 @@
-// const withTM = require("next-transpile-modules")([""]);
-
-const routes = {
-  records: "https://github.com/rsource-open-source/rsource-records",
-  android: "https://github.com/rsource-open-source/rsource-android",
-  redirect: "https://github.com/rsource-open-source/rsource-redirect",
-  api: "https://github.com/rsource-open-source/rsource-api",
-  "api-docs": "https://postman.com/rsource-open-source/workspace/rsource-api",
-  twitch: "https://github.com/rsource-open-source/rsource-twitch",
-  pylon: "https://github.com/rsource-open-source/server-pylon",
-  website: "https://github.com/rsource-open-source/website",
-  ahks: "https://github.com/rsource-open-source/ahks",
-  extractor: "https://github.com/rsource-open-source/extractor",
-  gist: "https://github.com/rsource-open-source/gists",
-  proposal: "https://github.com/rsource-open-source/strafes-net-api-proposal",
-  projects: "https://github.com/orgs/rsource-open-source/projects/3",
-  discord: "https://discord.gg/2uFfQ3WYNX",
-  organization: "https://github.com/rsource-open-source",
-  roblox: "https://www.roblox.com/groups/10125873/rsource-community",
-};
-
-let nextRoutes = [];
-
-for (const route in routes) {
-  nextRoutes.push({
-    source: `/${route}`,
-    destination: routes[route],
-    permanent: false,
-  });
-}
+const { readFileSync } = require("fs");
+const query = readFileSync("./request.gql", "utf8");
+const redirectRoutes = require("./utils/routes").default;
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -37,12 +10,13 @@ const nextConfig = {
   //     fs: "empty",
   //   };
   // },
-  images: {
-    domains: ["web-platforms.sfo2.cdn.digitaloceanspaces.com"],
-  },
   reactStrictMode: true,
   async redirects() {
-    return nextRoutes;
+    let routes = await redirectRoutes(process.env.GITHUB_TOKEN, query, true);
+    return routes;
+  },
+  typescript: {
+    ignoreBuildErrors: false,
   },
 };
 

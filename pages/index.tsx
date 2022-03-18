@@ -1,100 +1,124 @@
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
-import { routes } from "../public/routes";
-import Image from "next/image";
-// import * as THREE from "three";
+import { ghroutes } from "rsource-routes";
+import Block from "../utils/components/block";
+import HeaderBlock from "../utils/components/headerblock";
 
-let mappedRoutes: JSX.Element[] = [];
-for (const [k, v] of Object.entries(routes))
-  mappedRoutes.push(<a href={v}>{`\n${k} => ${v}`}</a>); // `\n${k} => ${v}`
-
-// if (typeof window !== "undefined") {
-//   const scene = new THREE.Scene();
-
-//   const camera = new THREE.PerspectiveCamera(
-//     75,
-//     window.innerWidth / window.innerHeight,
-//     0.1,
-//     1000
-//   );
-//   const renderer = new THREE.WebGLRenderer({
-//     canvas: document.querySelector("#bg")!,
-//   });
-
-//   renderer.setPixelRatio(window.devicePixelRatio);
-//   renderer.setSize(window.innerWidth, window.innerHeight);
-//   camera.position.setZ(35);
-
-//   renderer.render(scene, camera);
-
-//   const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
-//   const material = new THREE.MeshBasicMaterial({
-//     color: 0xffffff,
-//     wireframe: true,
-//   });
-
-//   const mesh = new THREE.Mesh(geometry, material);
-
-//   const grid = new THREE.GridHelper(100, 10);
-
-//   // mesh.rotation.x = 1.5708;
-
-//   scene.add(mesh, grid);
-//   renderer.render(scene, camera);
-// }
-
-const Home: NextPage = () => {
+const Home: NextPage<RepoProps> = (repoProps) => {
   return (
-    <div>
+    <>
       <Head>
         <title>rsource community</title>
         <meta
           property="og:title"
           content="rsource community: A StrafesNET Improvement Project"
-        ></meta>
+        />
         <meta
           property="og:description"
           content="rsource is a project started by insyri, aimed to create services around the StrafesNET ecosystem, including map development support, game unifying creations, and constructing transcendent experiences."
-        ></meta>
-        <meta property="og:url" content="https://rsource.community/"></meta>
-        <meta property="og:type" content="website"></meta>
+        />
+        <meta property="og:url" content="https://rsource.community/" />
+        <meta property="og:type" content="website" />
         <meta
           property="og:image"
           content={
             "https://media.discordapp.net/attachments/768093841793351723/945467062208331806/rsource_banner.png"
           }
-        ></meta>
-        <meta
-          content="#171a21"
-          data-react-helmet="true"
-          name="theme-color"
-        ></meta>
-        <meta name="twitter:card" content="summary_large_image"></meta>
+        />
+        <meta content="#171a21" data-react-helmet="true" name="theme-color" />
+        <meta name="twitter:card" content="summary_large_image" />
         <link rel="icon" href="/favicon.ico" />
+        <meta lang="en" />
       </Head>
-      <main>
-        <div className="redirects">
-          <pre>
-            <h1>rsource community</h1>
-            <p>available redirects:</p>
-            <p>{mappedRoutes}</p>
-            <a href="https://www.digitalocean.com/?refcode=02e293f3a59e&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge">
-              <Image
-                src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg"
-                alt="DigitalOcean Referral Badge"
-                width={200}
-                height={65}
-              />
+      <div className="flex flex-col">
+        <div className="font-mono text-cyan-50 h-screen">
+          <div className="p-10">
+            <div>
+              <header className="text-2xl pb-5">rsource.community</header>
+            </div>
+            <main>
+              <div className="grid gap-4 grid-cols-2">
+                <HeaderBlock
+                  title="rsource discord server"
+                  backgroundImg="/images/rsource_banner_notitle.png"
+                  icon="/images/borrowed/discord_logo.png"
+                  iconWidth={2}
+                  link="https://rsource.community/discord"
+                />
+                <HeaderBlock
+                  title="rsource github organization"
+                  backgroundImg="/images/borrowed/github_globe.png"
+                  icon="/images/borrowed/github_mark.png"
+                  iconWidth={1.5}
+                  link="https://rsource.community/github"
+                />
+              </div>
+              <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-4">
+                {Object.values(repoProps).map<JSX.Element>((repo) => {
+                  return (
+                    <Block
+                      key={repo.name}
+                      bgurl={repo.imgUrl}
+                      link={repo.url}
+                      title={repo.name}
+                      description={repo.description}
+                    />
+                  );
+                })}
+              </div>
+            </main>
+          </div>
+          <footer className="mt-auto bg-slate-1100 border-slate-800 border-t p-14">
+            brought to you by{" "}
+            <a
+              href="https://rsource.community/referral"
+              className="text-[#0069FF] hover:underline"
+            >
+              digitalocean
             </a>
-            <a href="https://docs.digitalocean.com/products/accounts/referrals/">
-              <br></br>why is this here?
+            <br />
+            <a
+              href="mailto:contact@rsource.community"
+              className="hover:underline text-slate-400 text-xs"
+            >
+              contact@rsource.community
             </a>
-          </pre>
+            <br />
+            <p className="text-right text-xs text-slate-400">thank you</p>
+          </footer>
         </div>
-        {/* <canvas id="bg"></canvas> */}
-      </main>
-    </div>
+      </div>
+    </>
   );
+};
+
+interface RepoProps {
+  [key: string]: {
+    name: string;
+    url: string;
+    description: string;
+    imgUrl: string;
+  };
+}
+
+export const getStaticProps: GetStaticProps<RepoProps> = async () => {
+  const { readFileSync } = await import("fs");
+  const query = readFileSync("./request.gql", "utf8");
+
+  const res = await ghroutes.getGitHubRepos(process.env.GITHUB_TOKEN!, query);
+  let props: RepoProps = {};
+  res.organization.repositories.edges.forEach((m) => {
+    props[m.node.name] = {
+      description: m.node.description,
+      name: m.node.name,
+      url: m.node.url,
+      imgUrl: m.node.openGraphImageUrl,
+    };
+  });
+
+  return {
+    props,
+  };
 };
 
 export default Home;

@@ -40,8 +40,10 @@ yarn-error.log*
 .env
 
 # 3d
-public/*.blend
-public/*.blend1
+public/**/*.blend
+public/**/*.blend1
 
 # IDK
 .vs
+
+utils/routes.js

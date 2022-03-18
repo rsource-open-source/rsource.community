@@ -2,25 +2,29 @@
   "name": "rsource.community",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "tsc utils/routes.ts && next dev",
+    "build": "tsc utils/routes.ts && next build",
+    "start": "tsc utils/routes.ts && next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@types/three": "^0.137.0",
     "axios": "^0.25.0",
     "next": "12.1.0",
-    "node-fetch": "^3.2.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "rsource-routes": "^0.0.13",
     "three": "^0.137.5"
   },
   "devDependencies": {
+    "@tailwindcss/line-clamp": "^0.3.1",
     "@types/node": "17.0.15",
     "@types/react": "17.0.39",
+    "autoprefixer": "^10.4.2",
     "eslint": "8.8.0",
     "eslint-config-next": "12.0.10",
+    "postcss": "^8.4.6",
+    "tailwindcss": "^3.0.23",
     "typescript": "4.5.5"
   }
 }
