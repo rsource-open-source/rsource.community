@@ -1,0 +1,23 @@
+name: Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    env:
+      DO_KEY: ${{ secrets.RSOURCE_COMMUNITY_DIGITALOCEAN_API_KEY }}
+    environment: 
+      name: production
+      url: https://rsource.community/
+    steps:
+      - name: deploy
+        run: |
+          curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $DO_KEY" "https://api.digitalocean.com/v2/apps/129187da-75f6-45af-bafb-b4d5e5cc6c8b/deployments" --output a.txt
+          if grep -q PENDING "a.txt"; then
+            exit 0
+          fi
+          exit 1
