@@ -11,7 +11,7 @@ jobs:
     env:
       DO_KEY: ${{ secrets.RSOURCE_COMMUNITY_DIGITALOCEAN_API_KEY }}
     environment:
-      name: production
+      name: Production
       url: https://rsource.community/
     steps:
       - name: deploy
@@ -19,6 +19,6 @@ jobs:
           curl -X POST \
           -H "Content-Type: application/json" \
           -H "Authorization: Bearer $DO_KEY" \
-          "https://api.digitalocean.com/v2/apps/129187da-75f6-45af-bafb-b4d5e5cc6c8b/deployments"
+          "https://api.digitalocean.com/v2/apps/129187da-75f6-45af-bafb-b4d5e5cc6c8b/deployments" \
           -d '{ "force_build": true }' \
-          --output a.txt && if grep -q "PENDING" "a.txt"; then exit 0; else exist 1; fi
+          --output a.txt && if grep -q "PENDING" "a.txt"; then exit 0; else exit 1; fi
