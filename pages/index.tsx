@@ -49,7 +49,7 @@ const Home: NextPage<RepoProps> = (repoProps) => {
               <header className="text-2xl pb-5">rsource.community</header>
             </div>
             <main>
-              <div className="grid gap-4 grid-cols-2">
+              <div className="grid gap-4 grid-cols-3">
                 <HeaderBlock
                   title="rsource discord server"
                   backgroundImg="/images/rsource_banner_notitle.png"
@@ -63,6 +63,13 @@ const Home: NextPage<RepoProps> = (repoProps) => {
                   icon="/images/borrowed/github_mark.png"
                   iconWidth={1.5}
                   link="https://rsource.community/github"
+                />
+                <HeaderBlock
+                  title="rsource roblox group"
+                  backgroundImg="/images/autobadges.png"
+                  icon="/images/borrowed/roblox_logo.png"
+                  iconWidth={1.5}
+                  link="https://rsource.community/roblox"
                 />
               </div>
               <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-4">
