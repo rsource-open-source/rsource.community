@@ -13,7 +13,7 @@ const Home: NextPage<RepoProps> = (repoProps) => {
         <meta name="author" content="insyri" />
         <meta
           name="keywords"
-          content="rsource, roblox, roblox bhop, roblox surf, bhop, surf, map making"
+          content="rsource, roblox, roblox bhop, roblox surf, bhop, surf, map making, source, source engine, strafes, strafes net, strafesnet, strafes.net, quaternions, css, counter strike, counter strike source"
         />
         <meta
           name="description"
