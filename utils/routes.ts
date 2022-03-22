@@ -49,5 +49,47 @@ export default async function redirectRoutes(
     });
   });
 
+  ([{
+      source: '/strafesnet/',
+      destination: 'https://roblox.com/groups/6980477/StrafesNET',
+      permanent: true
+  },{
+      source: '/strafesnet/old',
+      destination: 'https://roblox.com/2607715/Roblox-bhoppers',
+      permanent: true
+  },{
+      source: '/strafesnet/bhop',
+      destination: 'https://roblox.com/games/5315046213/bhop',
+      permanent: true
+  },{
+      source: '/strafesnet/surf',
+      destination: 'https://roblox.com/games/5315066937/surf',
+      permanent: true
+  },{
+      source: '/strafesnet/dev',
+      destination: 'https://roblox.com/games/5721760322/dev',
+      permanent: true
+  },{
+      source: '/strafesnet/maptest-deathrun',
+      destination: 'https://roblox.com/games/6870563649/Deathrun-Maptest',
+      permanent: true
+  },{
+      source: '/strafesnet/maptest-surf-new',
+      destination: 'https://roblox.com/games/8642163771/Surf-Maptest-New-Physics',
+      permanent: true
+  },{
+      source: '/strafesnet/maptest-bhop-new',
+      destination: 'https://roblox.com/games/8635061347/Bhop-Maptest-New-Physics',
+      permanent: true
+  },{
+      source: '/strafesnet/maptest-surf',
+      destination: 'https://roblox.com/games/517206177/Surf-Maptest',
+      permanent: true
+  },{
+      source: '/strafesnet/maptest-bhop',
+      destination: 'https://roblox.com/games/517201717/Bhop-Maptest',
+      permanent: true
+  }] as Redirect[]).forEach(r => redirectRoutes.push(r))
+
   return redirectRoutes;
 }
