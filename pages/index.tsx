@@ -9,6 +9,16 @@ const Home: NextPage<RepoProps> = (repoProps) => {
     <>
       <Head>
         <title>rsource community</title>
+        <meta charSet="utf-8" />
+        <meta name="author" content="insyri" />
+        <meta
+          name="keywords"
+          content="rsource, roblox, roblox bhop, roblox surf, bhop, surf, map making"
+        />
+        <meta
+          name="description"
+          content="rsource is a project started by insyri, aimed to create services around the StrafesNET ecosystem, including map development support, game unifying creations, and constructing transcendent experiences."
+        />
         <meta
           property="og:title"
           content="rsource community: A StrafesNET Improvement Project"
@@ -21,12 +31,14 @@ const Home: NextPage<RepoProps> = (repoProps) => {
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content={
-            "https://media.discordapp.net/attachments/768093841793351723/945467062208331806/rsource_banner.png"
-          }
+          content="https://media.discordapp.net/attachments/768093841793351723/945467062208331806/rsource_banner.png"
         />
         <meta content="#171a21" data-react-helmet="true" name="theme-color" />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="rsource community: A StrafesNET Improvement Project"
+        />
         <link rel="icon" href="/favicon.ico" />
         <meta lang="en" />
       </Head>
