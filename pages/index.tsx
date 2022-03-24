@@ -94,6 +94,13 @@ const Home: NextPage<RepoProps> = (repoProps) => {
               className="text-[#0069FF] hover:underline"
             >
               digitalocean
+            </a>{" "}
+            and{" "}
+            <a
+              href="https://cloudflare.com/"
+              className="text-[#f63] hover:underline"
+            >
+              cloudflare
             </a>
             <br />
             <a
@@ -103,7 +110,7 @@ const Home: NextPage<RepoProps> = (repoProps) => {
               contact@rsource.community
             </a>
             <br />
-            <p className="text-right text-xs text-slate-400">thank you</p>
+            <p className="text-right text-xs text-slate-400">ur mom is fat</p>
           </footer>
         </div>
       </div>
