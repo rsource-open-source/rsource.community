@@ -5,7 +5,8 @@
     "dev": "tsc utils/routes.ts && next dev",
     "build": "tsc utils/routes.ts && next build",
     "start": "tsc utils/routes.ts && next start",
-    "lint": "next lint"
+    "export": "tsc utils/routes.ts && next build && next export",
+    "lint": "tsc utils/routes.ts && next lint"
   },
   "dependencies": {
     "axios": "^0.25.0",
