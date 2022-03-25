@@ -9,5 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "16.x"
+      - name: install dependencies
+        run: npm install
       - name: lint
         run: npm run lint
