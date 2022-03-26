@@ -106,5 +106,7 @@ export default async function redirectRoutes(
     ] as Redirect[]
   ).forEach((r) => redirectRoutes.push(r));
 
+  console.log(redirectRoutes);
+
   return redirectRoutes;
 }
