@@ -4,8 +4,8 @@
   "scripts": {
     "dev": "tsc utils/routes.ts && next dev",
     "build": "tsc utils/routes.ts && next build",
-    "start": "tsc utils/routes.ts && next start",
-    "export": "tsc utils/routes.ts && next build && next export",
+    "start": "npm run build && next start",
+    "export": "npm run build && next export",
     "lint": "tsc utils/routes.ts && next lint"
   },
   "dependencies": {
