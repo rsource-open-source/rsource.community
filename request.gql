@@ -1,6 +1,10 @@
 {
   organization(login: "rsource-open-source") {
-    repositories(privacy: PUBLIC, first: 50, orderBy: { field: STARGAZERS }) {
+    repositories(
+      privacy: PUBLIC
+      first: 50
+      orderBy: { field: STARGAZERS, direction: DESC }
+    ) {
       edges {
         node {
           name
