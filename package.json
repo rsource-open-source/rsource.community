@@ -14,7 +14,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "rsource-routes": "^0.0.13",
-    "three": "^0.137.5"
+    "three": "^0.139.0"
   },
   "devDependencies": {
     "@tailwindcss/line-clamp": "^0.3.1",
