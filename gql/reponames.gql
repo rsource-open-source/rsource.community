@@ -1,0 +1,11 @@
+{
+  organization(login: "rsource-open-source") {
+    repositories(first: 50, privacy: PUBLIC) {
+      edges {
+        node {
+          name
+        }
+      }
+    }
+  }
+}

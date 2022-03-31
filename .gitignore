@@ -46,4 +46,4 @@ public/**/*.blend1
 # IDK
 .vs
 
-utils/routes.js
+**/*.js

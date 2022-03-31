@@ -129,9 +129,9 @@ interface RepoProps {
 
 export const getStaticProps: GetStaticProps<RepoProps> = async () => {
   const { readFileSync } = await import("fs");
-  const query = readFileSync("./request.gql", "utf8");
+  const query = readFileSync("./gql/everything.gql", "utf8");
 
-  const res = await ghroutes.getGitHubRepos(process.env.GITHUB_TOKEN!, query);
+  const res = await ghroutes.getGitHubRepos(process.env.GITHUB_TOKEN, query);
   let props: RepoProps = {};
   res.organization.repositories.edges.forEach((m) => {
     props[m.node.name] = {
