@@ -1,8 +1,9 @@
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
-import { ghroutes } from "rsource-routes";
 import Block from "../utils/components/block";
 import HeaderBlock from "../utils/components/headerblock";
+import { GitHubGQLRequest } from "../utils/functions/github_gql";
+import { GHOrgRepoEverything } from "../utils/types_constants/github";
 
 const Home: NextPage<RepoProps> = (repoProps) => {
   return (
@@ -131,7 +132,10 @@ export const getStaticProps: GetStaticProps<RepoProps> = async () => {
   const { readFileSync } = await import("fs");
   const query = readFileSync("./gql/everything.gql", "utf8");
 
-  const res = await ghroutes.getGitHubRepos(process.env.GITHUB_TOKEN, query);
+  const res = await GitHubGQLRequest<GHOrgRepoEverything>(
+    process.env.GITHUB_TOKEN,
+    query
+  );
   let props: RepoProps = {};
   res.organization.repositories.edges.forEach((m) => {
     props[m.node.name] = {
