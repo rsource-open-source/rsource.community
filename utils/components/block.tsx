@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 /**
  * about `description` and `hyperlinkText`
  *
@@ -25,21 +27,19 @@ const Block = ({
   return (
     <a href={link}>
       <div className="h-[18.5rem] bg-slate-900 rounded-md border border-slate-700 hover:border-slate-600 hover:cursor-pointer">
-        {/* <div
-          style={{ backgroundImage: `url(${bgurl})` }}
-          className="h-[7.5rem] bg-center bg-cover bg-no-repeat"
-        /> */}
-        <div className="max-h-[7.5rem]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+        <div className="max-h-[7.5rem] relative h-10">
+          <Image
             alt={title}
             src={bgurl}
+            layout="responsive"
+            width={1000}
+            height={1000}
             style={{
-              minHeight: "7.5rem",
-              width: "auto",
-              objectFit: "cover",
-              objectPosition: "",
+              borderTopLeftRadius: "0.375rem",
+              borderTopRightRadius: "0.375rem",
             }}
+            // objectFit="scale-down"
+            // objectPosition="50% bottom"
           />
         </div>
         <div className="p-5">
