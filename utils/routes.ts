@@ -89,7 +89,7 @@ export async function redirectRoutes(
       },
       {
         source: "/strafesnet/old",
-        destination: "https://roblox.com/2607715/Roblox-bhoppers",
+        destination: "https://roblox.com/groups/2607715/Roblox-bhoppers",
         permanent: true,
       },
       {
