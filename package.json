@@ -9,7 +9,7 @@
     "lint": "tsc utils/routes.ts && next lint"
   },
   "dependencies": {
-    "graphql": "^16.4.0",
+    "graphql": "^16.5.0",
     "graphql-request": "^4.2.0",
     "next": "12.1.6",
     "react": "18.1.0",
@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@tailwindcss/line-clamp": "^0.3.1",
-    "@types/node": "17.0.23",
+    "@types/node": "17.0.39",
     "@types/react": "18.0.5",
     "@types/three": "^0.139.0",
     "autoprefixer": "^10.4.7",
