@@ -9,7 +9,7 @@
     "lint": "tsc utils/routes.ts && next lint"
   },
   "dependencies": {
-    "graphql": "^16.5.0",
+    "graphql": "^16.8.1",
     "graphql-request": "^4.3.0",
     "next": "12.1.6",
     "react": "18.1.0",
